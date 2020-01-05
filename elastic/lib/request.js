@@ -1,12 +1,20 @@
+require('dotenv').config()
+
 const qs = require("qs");
-const log = require("debug")("bany-elastic:request")
+const log = require("debug")("@cnbany-elastic:request")
 const Got = require("got");
 
 
+const elasticOpt = {
+    "host": process.env.ES_HOST || "localhost",
+    "port": process.env.ES_PORT || 9200,
+    "user": process.env.ES_USER || "",
+    "pass": process.env.ES_PASS || ""
+}
 
-const elasticOpt = require('config').get('server.elastic');
-const elasticUrl = `http://${elasticOpt.user}:${elasticOpt.pass}@${elasticOpt.socket}`
-
+const elasticUrl = (elasticOpt.user && elasticOpt.pass) ?
+    `http://${elasticOpt.user}:${elasticOpt.pass}@${elasticOpt.host}:${elasticOpt.port}` :
+    `http://${elasticOpt.host}:${elasticOpt.port}`
 
 const got = Got.extend({
     baseUrl: elasticUrl,
@@ -120,6 +128,7 @@ const request = {
     },
 
     count: async function (index) {
+        log("count: is begin")
         let res = await got.get(`/${index}/_count`);
         if (res.body)
             return res.body.count

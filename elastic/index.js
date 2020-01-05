@@ -6,12 +6,12 @@ https://bodybuilder.js.org/docs/
 https://bodybuilder.js.org/
  */
 
+
 const _ = require("lodash"),
     fs = require("@cnbany/fs"),
     log = require("debug")("@cnbany-elastic:"),
     _parse = require("./lib/parse"),
     _request = require("./lib/request")
-
 
 const EventEmitter = require('events').EventEmitter
 
