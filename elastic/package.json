@@ -1,0 +1,19 @@
+{
+  "name": "@cnbany/elastic",
+  "version": "1.0.0",
+  "description": "elastic search",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@cnbany/fs": "^1.0.0",
+    "bodybuilder": "^2.2.18",
+    "debug": "^4.1.1",
+    "got": "^9.6.0",
+    "qs": "^6.9.1",
+    "lodash": "^4.17.15"
+  },
+  "author": "cnbany",
+  "license": "ISC"
+}
